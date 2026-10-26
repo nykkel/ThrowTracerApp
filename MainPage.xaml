@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:skia="clr-namespace:SkiaSharp.Views.Maui.Controls;assembly=SkiaSharp.Views.Maui.Controls"
+             x:Class="ThrowTracerApp.MainPage"
+             BackgroundColor="DarkGreen">
+
+    <Grid RowDefinitions="Auto,*,Auto" Padding="12" RowSpacing="10">
+        <Grid Grid.Row="0" ColumnDefinitions="Auto,*" ColumnSpacing="12">
+            <Button
+                x:Name="DoneButton"
+                Text="Done"
+                Clicked="OnDoneClicked"
+                HorizontalOptions="Start" />
+            <Label
+                x:Name="CurrentDistanceLabel"
+                Grid.Column="1"
+                HorizontalTextAlignment="End"
+                VerticalTextAlignment="Center"
+                TextColor="White"
+                FontAttributes="Bold"
+                Text="Distance: 0.0 m" />
+        </Grid>
+
+        <skia:SKCanvasView
+            x:Name="TracerCanvas"
+            Grid.Row="1"
+            EnableTouchEvents="True"
+            PaintSurface="OnCanvasPaintSurface"
+            Touch="OnCanvasTouch" />
+
+        <VerticalStackLayout Grid.Row="2" Spacing="6">
+            <Button
+                x:Name="StartCollectButton"
+                Text="Start"
+                Clicked="OnStartCollectClicked" />
+            <Label
+                x:Name="ThrowsLabel"
+                Text="Throws recorded: 0"
+                TextColor="White" />
+        </VerticalStackLayout>
+    </Grid>
+
+</ContentPage>
